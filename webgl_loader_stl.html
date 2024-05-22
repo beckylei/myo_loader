@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - STL</title>
+		<title>stl loader</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -43,6 +43,7 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 15 );
+				//camera.position.set( 2, 2, 2 );
 				camera.position.set( 2, 0.15, 2 );
 				// camera.position.set( 3, 0.5, 3 );
 
@@ -80,6 +81,7 @@
                 //     	scene.add( mesh );
 
                 // } );
+				
 
 				loader.load( './stl/binary/pid_02_gt.stl', function ( geometry ) {
 
@@ -89,7 +91,7 @@
 					mesh.scale.set( 0.005,0.005,0.005);
 					mesh.position.set(-0.2,1.8,0);
 					mesh.rotation.x=Math.PI/2*3;
-					mesh.rotation.z=2.8;
+					mesh.rotation.z=4;
 					
 
 					mesh.castShadow = true;
@@ -99,6 +101,140 @@
 
 				} );
 
+				loader.load( './stl/mmwhs_stl/mmwhs_1.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xFAD7A0  , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
+					// const material = new THREE.MeshDepthMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set(0.005,0.005,0.005);
+					mesh.position.set(-1,0.7,0.8);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=-0.6;
+				
+				
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				loader.load( './stl/mmwhs_stl/mmwhs_2.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xD98880  , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
+					// const material = new THREE.MeshDepthMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set(0.005,0.005,0.005);
+					mesh.position.set(-1,0.7,0.8);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=-0.6;
+				
+				
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				loader.load( './stl/mmwhs_stl/mmwhs_3.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xBB8FCE , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
+					// const material = new THREE.MeshDepthMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set(0.005,0.005,0.005);
+					mesh.position.set(-1,0.7,0.8);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=-0.6;
+				
+				
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				loader.load( './stl/mmwhs_stl/mmwhs_4.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0x7FB3D5  , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
+					// const material = new THREE.MeshDepthMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set(0.005,0.005,0.005);
+					mesh.position.set(-1,0.7,0.8);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=-0.6;
+				
+				
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				loader.load( './stl/mmwhs_stl/mmwhs_5.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0x73C6B6  , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
+					// const material = new THREE.MeshDepthMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set(0.005,0.005,0.005);
+					mesh.position.set(-1,0.7,0.8);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=-0.6;
+
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				loader.load( './stl/mmwhs_stl/mmwhs_6.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xF8C471  , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
+					// const material = new THREE.MeshDepthMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set(0.005,0.005,0.005);
+					mesh.position.set(-1,0.7,0.8);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=-0.6;
+
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				loader.load( './stl/mmwhs_stl/mmwhs_7.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xE59866 , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
+					// const material = new THREE.MeshDepthMaterial( { color: 0xff9c7c, specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set(0.005,0.005,0.005);
+					mesh.position.set(-1,0.7,0.8);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=-0.6;
+
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				/*
                 loader.load( './stl/binary/simplify_mmwhs.stl', function ( geometry ) {
 
                     	const material = new THREE.MeshPhongMaterial( { color: 0xFAD7A0  , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
@@ -106,9 +242,9 @@
                     	const mesh = new THREE.Mesh( geometry, material );
 
                     	mesh.scale.set(0.005,0.005,0.005);
-                    	mesh.position.set(-1.4,0.7,-0.2);
+                    	mesh.position.set(-1,0.7,0.8);
                     	mesh.rotation.x=Math.PI/2*3;
-						mesh.rotation.z=5;
+						mesh.rotation.z=-0.6;
 					
                     
                     	mesh.castShadow = true;
@@ -116,8 +252,9 @@
 
                     	scene.add( mesh );
 
-                } );
+                } );*/
 
+				/*
 				loader.load( './stl/binary/mmwhs_myo.stl', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0xFAD7A0  , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
@@ -135,18 +272,18 @@
 
 					scene.add( mesh );
 
-				} );
+				} );*/
 
 
 				loader.load( './stl/binary/segthor_heart.stl', function ( geometry ) {
 
-					const material = new THREE.MeshPhongMaterial( { color: 0xBFC9CA   , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
+					const material = new THREE.MeshPhongMaterial( { color: 0x7FB3D5   , specular: 0x494949, shininess: 200, side: THREE.DoubleSide } );
 					const mesh = new THREE.Mesh( geometry, material );
 
 					mesh.scale.set(0.005,0.005,0.005);
-					mesh.position.set(-0.8,1.8,0.2);
+					mesh.position.set(-0.2,1.8,0.6);
 					mesh.rotation.x=Math.PI/2*3;
-					mesh.rotation.z=1.5;
+					mesh.rotation.z=3.2;
 
 					mesh.castShadow = true;
 					mesh.receiveShadow = true;
@@ -158,7 +295,63 @@
 				} );
 
 
+				
+				loader.load( './stl/acdc_stl/acdc_1.stl', function ( geometry ) {
 
+					const material = new THREE.MeshPhongMaterial( { color: 0x7DCEA0 , specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set( 0.005,0.005,0.005);
+					mesh.position.set(-0.3,0,0.4);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=1.5;
+					mesh.rotation.y=3.1;
+					
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				loader.load( './stl/acdc_stl/acdc_2.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xF8C471 , specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set( 0.005,0.005,0.005);
+					mesh.position.set(-0.3,0,0.4);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=1.5;
+					mesh.rotation.y=3.1;
+					
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+				loader.load( './stl/acdc_stl/acdc_3.stl', function ( geometry ) {
+
+					const material = new THREE.MeshPhongMaterial( { color: 0xE59866 , specular: 0x494949, shininess: 200 } );
+					const mesh = new THREE.Mesh( geometry, material );
+
+					mesh.scale.set( 0.005,0.005,0.005);
+					mesh.position.set(-0.3,0,0.4);
+					mesh.rotation.x=Math.PI/2*3;
+					mesh.rotation.z=1.5;
+					mesh.rotation.y=3.1;
+					
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
 
 
 
@@ -233,7 +426,7 @@
 
 			function render() {
 
-				const timer = Date.now() * 0.00005;
+				const timer = Date.now() * 0.0001;
 
 				camera.position.x = Math.cos( timer ) * 3;
 				camera.position.z = Math.sin( timer ) * 3;
