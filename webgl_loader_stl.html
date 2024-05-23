@@ -7,11 +7,11 @@
 		<link type="text/css" rel="stylesheet" href="main.css">
 	</head>
 	<body>
-		<div id="info">
+		<!-- <div id="info">
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> -
 			STL loader test by <a href="https://github.com/aleeper" target="_blank" rel="noopener">aleeper</a>.<br/>
 			PR2 head from <a href="http://www.ros.org/wiki/pr2_description">www.ros.org</a>
-		</div>
+		</div> -->
 
 		<script type="importmap">
 			{
@@ -294,7 +294,7 @@
 
 				} );
 
-				loader.load( './stl/binary/acdc.stl', function ( geometry ) {
+				/*loader.load( './stl/binary/acdc.stl', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0x7DCEA0 , specular: 0x494949, shininess: 200 } );
 					const mesh = new THREE.Mesh( geometry, material );
@@ -302,7 +302,6 @@
 					mesh.scale.set( 0.0035,0.0035,0.0035);
 					mesh.position.set(-0.1,-0.48,0.2);
 					mesh.rotation.x=Math.PI/2*3+0.5;
-					//mesh.rotation.x=0;
 					mesh.rotation.z=1.5;
 					mesh.rotation.y=3.1;
 					
@@ -312,18 +311,18 @@
 
 					scene.add( mesh );
 
-				} );
+				} );*/
 
 
-				/*
+				
 				loader.load( './stl/acdc_stl/acdc_1.stl', function ( geometry ) {
 
 					const material = new THREE.MeshPhongMaterial( { color: 0x7DCEA0 , specular: 0x494949, shininess: 200 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.scale.set( 0.005,0.005,0.005);
-					mesh.position.set(-0.3,0,0.4);
-					mesh.rotation.x=Math.PI/2*3;
+					mesh.scale.set( 0.0035,0.0035,0.0035);
+					mesh.position.set(-0.1,-0.48,0.2);
+					mesh.rotation.x=Math.PI/2*3+0.5;
 					mesh.rotation.z=1.5;
 					mesh.rotation.y=3.1;
 					
@@ -340,9 +339,9 @@
 					const material = new THREE.MeshPhongMaterial( { color: 0xF8C471 , specular: 0x494949, shininess: 200 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.scale.set( 0.005,0.005,0.005);
-					mesh.position.set(-0.3,0,0.4);
-					mesh.rotation.x=Math.PI/2*3;
+					mesh.scale.set( 0.0035,0.0035,0.0035);
+					mesh.position.set(-0.1,-0.48,0.2);
+					mesh.rotation.x=Math.PI/2*3+0.5;
 					mesh.rotation.z=1.5;
 					mesh.rotation.y=3.1;
 					
@@ -359,9 +358,9 @@
 					const material = new THREE.MeshPhongMaterial( { color: 0xE59866 , specular: 0x494949, shininess: 200 } );
 					const mesh = new THREE.Mesh( geometry, material );
 
-					mesh.scale.set( 0.005,0.005,0.005);
-					mesh.position.set(-0.3,0,0.4);
-					mesh.rotation.x=Math.PI/2*3;
+					mesh.scale.set( 0.0035,0.0035,0.0035);
+					mesh.position.set(-0.1,-0.48,0.2);
+					mesh.rotation.x=Math.PI/2*3+0.5;
 					mesh.rotation.z=1.5;
 					mesh.rotation.y=3.1;
 					
@@ -371,7 +370,7 @@
 
 					scene.add( mesh );
 
-				} );*/
+				} );
 
 
 
