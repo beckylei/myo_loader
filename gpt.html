@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>STL Viewer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="main.css">
+</head>
+<body>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "./build/three.module.js",
+                "three/addons/": "./jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import Stats from 'three/addons/libs/stats.module.js';
+        import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+
+        let container, stats;
+        let camera, cameraTarget, scene, renderer;
+
+        const objects = [];
+
+        init();
+        animate();
+
+        function init() {
+            container = document.createElement('div');
+            document.body.appendChild(container);
+
+            camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+            camera.position.set(10, 15, 20);
+
+            cameraTarget = new THREE.Vector3(0, 0, 0);
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x72645b);
+            scene.fog = new THREE.Fog(0x72645b, 20, 100);
+
+            // Ground
+            const plane = new THREE.Mesh(
+                new THREE.PlaneGeometry(2000, 2000),
+                new THREE.MeshPhongMaterial({ color: 0xcbcbcb, specular: 0x474747 })
+            );
+            plane.rotation.x = - Math.PI / 2;
+            plane.position.y = - 0.5;
+            scene.add(plane);
+            plane.receiveShadow = true;
+
+            const loader = new STLLoader();
+
+            function loadModel(path, position) {
+                console.log('Loading model:', path);
+                loader.load(path, function (geometry) {
+                    console.log('Model loaded:', path);
+                    const material = new THREE.MeshPhongMaterial({ color: 0xff5533, specular: 0x111111, shininess: 200 });
+                    const mesh = new THREE.Mesh(geometry, material);
+
+                    mesh.scale.set(0.003, 0.003, 0.003);
+                    mesh.position.set(...position);
+
+                    mesh.castShadow = true;
+                    mesh.receiveShadow = true;
+
+                    scene.add(mesh);
+                    objects.push(mesh);
+                }, undefined, function (error) {
+                    console.error('An error happened while loading the STL file:', error);
+                });
+            }
+
+            // Load all models and arrange in a 5x5 grid
+            const stlFiles = [
+                './stl/chgh_stl/pid_02.stl', './stl/chgh_stl/pid_03.stl', './stl/chgh_stl/pid_04.stl', './stl/chgh_stl/pid_05.stl', './stl/chgh_stl/pid_06.stl',
+                './stl/chgh_stl/pid_07.stl', './stl/chgh_stl/pid_08.stl', './stl/chgh_stl/pid_09.stl', './stl/chgh_stl/pid_10.stl', './stl/chgh_stl/pid_11.stl',
+                './stl/chgh_stl/pid_12.stl', './stl/chgh_stl/pid_13.stl', './stl/chgh_stl/pid_14.stl', './stl/chgh_stl/pid_15.stl', './stl/chgh_stl/pid_16.stl',
+                './stl/chgh_stl/pid_17.stl', './stl/chgh_stl/pid_18.stl', './stl/chgh_stl/pid_19.stl', './stl/chgh_stl/pid_20.stl', './stl/chgh_stl/pid_21.stl',
+                './stl/chgh_stl/pid_22.stl', './stl/chgh_stl/pid_23.stl', './stl/chgh_stl/pid_24.stl', './stl/chgh_stl/pid_25.stl', './stl/chgh_stl/pid_26.stl'
+            ];
+
+            let index = 0;
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 5; j++) {
+                    if (index < stlFiles.length) {
+                        loadModel(stlFiles[index], [j * 1.5 - 3.75, 0, i * 1.5 - 3.75]);
+                        index++;
+                    }
+                }
+            }
+
+            // Lights
+            const hemisphereLight = new THREE.HemisphereLight(0x443333, 0x111122);
+            scene.add(hemisphereLight);
+            console.log('Hemisphere light added.');
+
+            addShadowedLight(1, 1, 1, 0xffffff, 1.35);
+            addShadowedLight(0.5, 1, -1, 0xffaa00, 1);
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            renderer.shadowMap.enabled = true;
+
+            container.appendChild(renderer.domElement);
+
+            // Stats
+            stats = new Stats();
+            container.appendChild(stats.dom);
+
+            window.addEventListener('resize', onWindowResize);
+        }
+
+        function addShadowedLight(x, y, z, color, intensity) {
+            const directionalLight = new THREE.DirectionalLight(color, intensity);
+            directionalLight.position.set(x, y, z);
+            scene.add(directionalLight);
+            console.log('Directional light added at:', x, y, z);
+
+            directionalLight.castShadow = true;
+            const d = 10;
+            directionalLight.shadow.camera.left = -d;
+            directionalLight.shadow.camera.right = d;
+            directionalLight.shadow.camera.top = d;
+            directionalLight.shadow.camera.bottom = -d;
+            directionalLight.shadow.camera.near = 1;
+            directionalLight.shadow.camera.far = 20;
+            directionalLight.shadow.bias = -0.002;
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            render();
+            stats.update();
+        }
+
+        function render() {
+            const timer = Date.now() * 0.0005;
+
+            camera.position.x = Math.cos(timer) * 15;
+            camera.position.z = Math.sin(timer) * 15;
+            camera.lookAt(cameraTarget);
+
+            objects.forEach(object => {
+                object.rotation.z += 0.01;
+            });
+
+            renderer.render(scene, camera);
+        }
+    </script>
+</body>
+</html>

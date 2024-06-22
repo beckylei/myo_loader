@@ -7,11 +7,11 @@
 		<link type="text/css" rel="stylesheet" href="main.css">
 	</head>
 	<body>
-		<div id="info">
+		<!-- <div id="info">
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> -
 			STL loader test by <a href="https://github.com/aleeper" target="_blank" rel="noopener">aleeper</a>.<br/>
 			PR2 head from <a href="http://www.ros.org/wiki/pr2_description">www.ros.org</a>
-		</div>
+		</div> -->
 
 		<script type="importmap">
 			{
@@ -42,8 +42,8 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 1, 15 );
-				//camera.position.set( 2, 2, 2 );
+				camera = new THREE.PerspectiveCamera( 15, window.innerWidth / window.innerHeight, 1, 15 );
+				// camera.position.set( 2, 2, 2 );
 				camera.position.set( 2, 0.15, 2 );
 				// camera.position.set( 3, 0.5, 3 );
 
@@ -234,8 +234,8 @@
 
 				const timer = Date.now() * 0.0001;
 
-				camera.position.x = Math.cos( timer ) * 3;
-				camera.position.z = Math.sin( timer ) * 3;
+				// camera.position.x = Math.cos( timer ) * 3;
+				// camera.position.z = Math.sin( timer ) * 3;
 
 				camera.lookAt( cameraTarget );
 
